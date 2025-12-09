@@ -5,9 +5,9 @@ import logo from "../../../assets/Logo design for Asse.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#4A1FBF] text-gray-200 py-10 px-6">
+    <footer className="bg-[#4A1FBF] mt-1 text-gray-200 py-10 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Brand + Description */}
+        
         <div>
           <Link to={'/'} className="text-2xl font-bold text-primary mb-3">
             <img className="w-40 -mt-16" src={logo} alt="" />
@@ -17,7 +17,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Quick Navigation */}
+        
         <div>
           <h3 className="text-xl font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2">
@@ -44,7 +44,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Contact + Social */}
+       
         <div>
           <h3 className="text-xl font-semibold mb-3">Contact Us</h3>
           <p>
@@ -80,7 +80,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Line */}
+     
       <div className="border-t border-gray-700 mt-8 pt-4 text-center text-gray-500 text-sm">
         © {new Date().getFullYear()} Antu Shil. All Rights Reserved.
       </div>

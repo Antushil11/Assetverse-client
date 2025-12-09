@@ -1,16 +1,28 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import logo from "../../../assets/Logo design for Asse.png";
+import useAuth from "../../../hooks/useAuth";
 
 const Nabvar = () => {
+  const {user,logOut} = useAuth()
+
+  const handleLogOut = () =>{
+    logOut()
+    .then(result =>{
+      console.log(result)
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+  }
   const links = (
     <>
       <li className=" ">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="">
+      <li className="" >
         <details>
-          <summary>Join as Employee</summary>
+          <summary onClick={"/register"}>Join as Employee</summary>
           <ul className="p-2  w-40 z-1 bg-secondary">
             <li>
               <NavLink>My Assets</NavLink>
@@ -68,7 +80,7 @@ const Nabvar = () => {
               {links}
             </ul>
           </div>
-          <a href="" className="btn btn-ghost hover:bg-transparent hover:border-none normal-case text-xl">
+          <a href="/" className="btn btn-ghost hover:bg-transparent hover:border-none normal-case text-xl">
             <img className="w-40" src={logo} alt="" />
           </a>
         </div>
@@ -76,7 +88,11 @@ const Nabvar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn bg-primary">Button</a>
+          {
+            user ? 
+            <a onClick={handleLogOut} className="btn bg-primary">Log Out</a>
+            : <Link to={'/login'} className="btn bg-primary">Log in</Link>
+          }
         </div>
       </div>
     </div>
