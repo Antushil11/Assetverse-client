@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocalLogin from "../../SocalLogin/SocalLogin";
 import axios from "axios";
 
@@ -12,10 +12,14 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const { registerUser } = useAuth();
+  const { registerUser,updateUserProfile  } = useAuth();
+
+  const location = useLocation()
+  const navigate = useNavigate()
+  console.log("register",location )
 
   const handleRegistrationHr = (data) => {
-    console.log("after register", data.photo[0]);
+    
 
     const profileImg = data.photo[0];
 
@@ -32,6 +36,21 @@ const Register = () => {
         axios.post(image_API_URL, formData)
         .then(res =>{
             console.log( 'after image upload',res.data.data.url)
+             //update user profile
+            const userProfile ={
+              displayName: data.name,
+              photoURL: res.data.data.url,
+
+
+            }
+            updateUserProfile(userProfile)
+            .then(() =>{
+              console.log('user profile upadte ')
+              navigate(location.state || '/')
+            })
+            .catch(error => console.log(error))
+
+           
         })
       })
       .catch((error) => {
@@ -118,7 +137,7 @@ const Register = () => {
         </fieldset>
         <p>
           Already have a account{" "}
-          <Link className="text-secondary" to={"/login"}>
+          <Link state={location.state} className="text-secondary" to={"/login"}>
             Login
           </Link>
         </p>

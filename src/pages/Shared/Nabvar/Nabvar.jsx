@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/Logo design for Asse.png";
 import useAuth from "../../../hooks/useAuth";
 
@@ -17,12 +17,17 @@ const Nabvar = () => {
   }
   const links = (
     <>
+   
       <li className=" ">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="" >
+
+       <li><NavLink to={"/employee"}>Employee</NavLink></li>
+
+        <li><NavLink to={"/employee"}>Employee</NavLink></li>
+      {/* <li className="" >
         <details>
-          <summary onClick={"/register"}>Join as Employee</summary>
+          <summary>Join as Employee</summary>
           <ul className="p-2  w-40 z-1 bg-secondary">
             <li>
               <NavLink>My Assets</NavLink>
@@ -48,11 +53,12 @@ const Nabvar = () => {
             </li>
           </ul>
         </details>
-      </li>
+      </li> */}
     </>
   );
   return (
-    <div className="text-white bg-[#4A1FBF]">
+    // sticky top-0 z-50
+    <div className="text-white bg-[#4A1FBF] ">
       <div className="navbar  max-w-7xl mx-auto shadow-sm  rounded-2xl">
         <div className="navbar-start ">
           <div className="dropdown">
@@ -90,8 +96,29 @@ const Nabvar = () => {
         <div className="navbar-end">
           {
             user ? 
-            <a onClick={handleLogOut} className="btn bg-primary">Log Out</a>
+            (
+            <div className="flex">
+              <div tabIndex={0} role="button" className="w-12 rounded-full">
+                <img
+                  className="rounded-full border-2 border-white cursor-pointer"
+                  src={user.photoURL || "https://via.placeholder.com/150"}
+                  alt="profile"
+                />
+              </div>
+
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-[#4A1FBF] rounded-box w-40"
+              >
+                
+                <li><button onClick={handleLogOut}>Logout</button></li>
+              </ul>
+            </div>
+          )
+            
+
             : <Link to={'/login'} className="btn bg-primary">Log in</Link>
+            
           }
         </div>
       </div>

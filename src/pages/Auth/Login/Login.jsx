@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocalLogin from "../SocalLogin/SocalLogin";
 
 const Login = () => {
@@ -14,11 +14,16 @@ const Login = () => {
 
   const {signInUser} = useAuth()
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+
   const handleLogin = (data) => {
     console.log(data);
     signInUser(data.email, data.password)
     .then(result =>{
-        console.log(result)
+        console.log(result.user)
+        navigate(location?.state || '/')
         
     })
     .catch(error =>{
@@ -67,7 +72,7 @@ const Login = () => {
           </div>
           <button className="btn btn-neutral mt-4">Login</button>
         </fieldset>
-        <p>New to AssetVerse <Link className="text-secondary"  to={'/register'}>Register</Link></p>
+        <p>New to AssetVerse <Link state={location.state} className="text-secondary"  to={'/register'}>Register</Link></p>
       </form>
       <SocalLogin></SocalLogin>
     </div>

@@ -4,6 +4,10 @@ import Home from "../pages/Home/Home/Home";
 import AuthLayout from "../layouts/AuthLayout";
 import Register from "../pages/Auth/Login/Register/Register";
 import Login from "../pages/Auth/Login/Login";
+import PrivateRoute from "./PrivateRoute";
+import Employee from "../pages/Employee/Employee";
+import AddanAsset from "../pages/HRManager/AddanAsset";
+import Upgrade from "../pages/HRManager/Upgrade";
 
 
 export const router = createBrowserRouter([
@@ -15,6 +19,19 @@ export const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
+      {
+        path:'/employee',
+        element:<PrivateRoute><Employee></Employee></PrivateRoute>
+      },
+      {
+        path:'/upgrade',
+        element:<PrivateRoute><Upgrade></Upgrade></PrivateRoute>
+      },
+      {
+        path:'/Add-an-Asset',
+        element:<PrivateRoute><AddanAsset></AddanAsset></PrivateRoute>
+
+      }
     ],
   },
   {
