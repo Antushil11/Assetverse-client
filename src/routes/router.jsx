@@ -5,9 +5,13 @@ import AuthLayout from "../layouts/AuthLayout";
 import Register from "../pages/Auth/Login/Register/Register";
 import Login from "../pages/Auth/Login/Login";
 import PrivateRoute from "./PrivateRoute";
-import Employee from "../pages/Employee/Employee";
 import AddanAsset from "../pages/HRManager/AddanAsset";
-import Upgrade from "../pages/HRManager/Upgrade";
+import DashbordLayout from "../layouts/DashbordLayout";
+import AssetList from "../pages/HRManager/AssetList";
+import UpgradePackage from "../pages/HRManager/UpgradePackage";
+import MyAssets from "../pages/Employee/MyAssets";
+
+
 
 
 export const router = createBrowserRouter([
@@ -19,19 +23,8 @@ export const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
-      {
-        path:'/employee',
-        element:<PrivateRoute><Employee></Employee></PrivateRoute>
-      },
-      {
-        path:'/upgrade',
-        element:<PrivateRoute><Upgrade></Upgrade></PrivateRoute>
-      },
-      {
-        path:'/Add-an-Asset',
-        element:<PrivateRoute><AddanAsset></AddanAsset></PrivateRoute>
 
-      }
+      
     ],
   },
   {
@@ -41,7 +34,6 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         Component: Login,
-       
       },
       {
         path: "/register",
@@ -49,4 +41,40 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "HR-Manager",
+    element: (
+      <PrivateRoute>
+        <DashbordLayout></DashbordLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "Add-an-Asset",
+        element:<AddanAsset></AddanAsset>
+       
+      },
+      {
+        path: "Asset-List",
+        element:<AssetList></AssetList>
+       
+      },
+      {
+        path:'Upgrade-Package',
+        element:<UpgradePackage></UpgradePackage>
+
+      },
+    ],
+  },
+
+  {
+    path:'Employee',
+    element:<PrivateRoute><DashbordLayout></DashbordLayout></PrivateRoute>,
+    children:[
+      {
+        path:'My-Assets',
+        element:<MyAssets></MyAssets>
+      }
+    ]
+  }
 ]);

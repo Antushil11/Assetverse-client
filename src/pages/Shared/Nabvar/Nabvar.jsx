@@ -22,9 +22,10 @@ const Nabvar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
 
-       <li><NavLink to={"/employee"}>Employee</NavLink></li>
+       <li><NavLink to={"/HR-Manager"}>HR Manager</NavLink></li>
+       <li><NavLink to={"/Employee"}>Employee</NavLink></li>
 
-        <li><NavLink to={"/employee"}>Employee</NavLink></li>
+        
       {/* <li className="" >
         <details>
           <summary>Join as Employee</summary>
