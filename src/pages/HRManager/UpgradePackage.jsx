@@ -1,6 +1,13 @@
 import React from "react";
+import useAuth from "../../hooks/useAuth";
+import useAxoisSecure from "../../hooks/useAxoisSecure";
+import PaymentHistory from "./PaymentHistory";
+
 
 const UpgradePackage = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxoisSecure();
+
   const packages = [
     {
       name: "Basic",
@@ -30,12 +37,20 @@ const UpgradePackage = () => {
     },
   ];
 
-  const handlePurchase = (pack) => {
-    console.log("Purchasing:", pack);
+  const handlePurchase = async (pack) => {
+    try {
+      const res = await axiosSecure.post("/create-checkout-session", {
+        hrEmail: user.email,
+        packageName: pack.name,
+        price: pack.price,
+        employeeLimit: pack.employeeLimit,
+      });
 
-    // Later you will replace this with your Stripe Checkout Route
-    // axios.post('/create-checkout-session', { packageId: pack._id })
-    alert(`Proceeding to Stripe payment for: ${pack.name}`);
+      
+      window.location.assign(res.data.url);
+    } catch (error) {
+      console.error("Payment Error:", error);
+    }
   };
 
   return (
@@ -76,7 +91,9 @@ const UpgradePackage = () => {
         ))}
       </div>
 
-      
+      <div>
+        <PaymentHistory></PaymentHistory>
+      </div>
     </div>
   );
 };

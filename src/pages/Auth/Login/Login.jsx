@@ -72,7 +72,7 @@ const Login = () => {
           </div>
           <button className="btn btn-neutral mt-4">Login</button>
         </fieldset>
-        <p>New to AssetVerse <Link state={location.state} className="text-secondary"  to={'/register'}>Register</Link></p>
+        {/* <p>New to AssetVerse <Link state={location.state} className="text-secondary"  to={'/register'}>Register</Link></p> */}
       </form>
       <SocalLogin></SocalLogin>
     </div>

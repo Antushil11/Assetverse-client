@@ -4,6 +4,7 @@ import { IoAdd } from "react-icons/io5";
 import { Link, NavLink, Outlet } from "react-router";
 import { LuPackagePlus } from "react-icons/lu";
 import { SiPhpmyadmin } from "react-icons/si";
+import { RiSecurePaymentFill } from "react-icons/ri";
 
 const DashbordLayout = () => {
   return ( 
@@ -99,6 +100,15 @@ const DashbordLayout = () => {
                 data-tip="Upgrade-Package"   to={'/HR-Manager/Upgrade-Package'}>
                   <LuPackagePlus />
                   <span className="is-drawer-close:hidden">Upgrade Package</span>
+                  
+                 </NavLink>
+            </li>
+
+            <li>
+                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                data-tip="Upgrade-Package"   to={'/HR-Manager/payment-history'}>
+                  <RiSecurePaymentFill />
+                  <span className="is-drawer-close:hidden">Payment History</span>
                   
                  </NavLink>
             </li>

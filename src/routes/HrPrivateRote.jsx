@@ -1,11 +1,9 @@
-
 import React from 'react';
 import useAuth from '../hooks/useAuth';
-import Loading from '../components/Loading/Loading';
 import { Navigate, useLocation } from 'react-router';
+import Loading from '../components/Loading/Loading';
 
-const PrivateRoute = ({children}) => {
-
+const HrPrivateRote = ({children}) => {
     const {user, loading } = useAuth();
     const location = useLocation();
     
@@ -15,9 +13,9 @@ const PrivateRoute = ({children}) => {
     }
 
     if(!user){
-        return <Navigate state={location.pathname} to='/register'></Navigate>
+        return <Navigate state={location.pathname} to='/Hrregister'></Navigate>
     }
     return children;
 };
 
-export default PrivateRoute;
+export default HrPrivateRote;

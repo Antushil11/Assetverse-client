@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import SocalLogin from "../../SocalLogin/SocalLogin";
 import axios from "axios";
 
-const Register = () => {
+const HrRegister = () => {
   const {
     register,
     handleSubmit,
@@ -75,18 +75,7 @@ const Register = () => {
             <p className="text-red-600">Name is Required</p>
           )}
 
-          {/* Photo */}
-          <label className="label">Photo</label>
-
-          <input
-            type="file"
-            {...register("photo", { required: true })}
-            className="file-input"
-            placeholder="Enter Your Name"
-          />
-          {errors.name?.type === "required" && (
-            <p className="text-red-600">Photo is Required</p>
-          )}
+         
 
           {/* email */}
           <label className="label">Email</label>
@@ -98,6 +87,30 @@ const Register = () => {
           />
           {errors.email?.type === "required" && (
             <p className="text-red-600">Email is Required</p>
+          )}
+            {/* Company Name */}
+          <label className="label">Company Name</label>
+          <input
+            type="text"
+            {...register("companyname", { required: true })}
+            className="input"
+            placeholder="Company Name"
+          />
+          {errors.name?.type === "required" && (
+            <p className="text-red-600">Company Name is Required</p>
+          )}
+
+           {/*Company  Photo */}
+          <label className="label">Company Photo</label>
+
+          <input
+            type="file"
+            {...register("photo", { required: true })}
+            className="file-input"
+            placeholder="Enter Your Name"
+          />
+          {errors.name?.type === "required" && (
+            <p className="text-red-600">Photo is Required</p>
           )}
 
           {/* password */}
@@ -147,4 +160,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default HrRegister;
