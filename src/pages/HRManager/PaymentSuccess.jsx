@@ -17,8 +17,7 @@ const PaymentSuccess = () => {
           );
           console.log("Payment updated:", res.data);
 
-          // After success, navigate to Payment History
-        //   navigate("/HR-Manager/payment-history");
+          
         }
       } catch (error) {
         console.error("Payment update failed:", error);
