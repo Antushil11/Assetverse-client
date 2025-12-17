@@ -88,7 +88,7 @@ const RequestanAsset = () => {
         ))}
       </div>
 
-      {/* Open the modal using document.getElementById('ID').showModal() method */}
+      
 
       <dialog
         ref={riderModalRef}
