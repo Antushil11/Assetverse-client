@@ -15,7 +15,7 @@ const ProfilePage = () => {
     },
   });
 
-  // ✅ Use a proper state variable
+
   const [profilePic, setProfilePic] = useState(user?.photoURL || null);
 
   const onSubmit = (data) => {
