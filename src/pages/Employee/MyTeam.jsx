@@ -27,16 +27,7 @@ const MyTeam = () => {
     return employees.filter((e) => e.companyName === selectedCompany);
   }, [employees, selectedCompany]);
 
-  // Get upcoming birthdays in current month
-  // const currentMonth = dayjs().month() + 1; 
-  // const upcomingBirthdays = useMemo(() => {
-  //   return employees.filter((e) => {
-  //     if (!e.dateOfBirth) return false;
-  //     const birthMonth = dayjs(e.dateOfBirth).month() + 1;
-  //     return birthMonth === currentMonth;
-  //   });
-  // }, [employees, currentMonth]);
-
+  
   return (
     <div className="p-6 text-black">
       <h2 className="text-2xl font-bold mb-4">My Team</h2>
