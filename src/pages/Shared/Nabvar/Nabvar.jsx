@@ -19,21 +19,23 @@ const Nabvar = () => {
   };
   const links = (
     <>
-      <li className="mr-2">
+      <li className=" ">
         <NavLink to="/">Home</NavLink>
       </li>
+      
 
-      {role === "admin" && (
-        <li>
-          <NavLink to={"/HR-Manager"}>Join as HR Manager</NavLink>
-        </li>
-      )}
 
-      {role === "employee" && (
-        <li>
-          <NavLink to={"/Employee"}>Join as Employee</NavLink>
-        </li>
-      )}
+       {
+        role ==='admin' && <li>
+        <NavLink to={"/HR-Manager"}>HR Manager</NavLink>
+      </li>
+      }
+
+     {
+      role === 'employee' &&  <li>
+        <NavLink to={"/Employee"}>Employee</NavLink>
+      </li>
+     } 
 
       {/* <li className="" >
         <details>
@@ -64,6 +66,18 @@ const Nabvar = () => {
           </ul>
         </details>
       </li> */}
+
+      <li className=" ">
+        <NavLink to="/CaseStudies">Case Studies</NavLink>
+      </li>
+      <li className=" ">
+        <NavLink to="/RecentWork">Recent Work</NavLink>
+      </li>
+      <li className=" ">
+        <NavLink to="/Creative-Work">Creative Work</NavLink>
+      </li>
+
+
     </>
   );
 
@@ -145,12 +159,10 @@ const Nabvar = () => {
             ))
           ) : (
             <div className="">
-              <Link to={"/login"} className="btn bg-primary text-white mr-2">
-                Log in
-              </Link>
-              <Link to={"/register"} className="btn bg-primary text-white">
-                Register
-              </Link>
+            <Link to={"/login"} className="btn bg-primary text-white">
+              Log in
+            </Link>
+            <Link to={'/register'} className="btn bg-primary text-white">Register</Link>
             </div>
           )}
         </div>

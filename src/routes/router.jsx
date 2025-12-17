@@ -23,6 +23,10 @@ import AdminRoute from "./AdminRoute";
 import RequestanAsset from "../pages/Employee/RequestanAsset";
 import EmployeeRouter from "./EmployeeRouter";
 import ProfilePage from "../pages/Employee/ProfilePage";
+import CaseStudies from "../pages/CaseStudies";
+import RecentWork from "../pages/RecentWork";
+import CreativeWork from "../pages/CreativeWork";
+
 
 
 
@@ -37,6 +41,19 @@ export const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+      {
+        path:'/CaseStudies',
+        element:<CaseStudies></CaseStudies>
+      },
+      {
+        path: '/RecentWork',
+        element:<RecentWork></RecentWork>
+      },
+      {
+        path:"/Creative-Work",
+        element:<CreativeWork></CreativeWork>
+      }
+     
     ],
   },
   {
@@ -100,6 +117,7 @@ export const router = createBrowserRouter([
         path: "User-Management",
         element: <AdminRoute><UserManagement></UserManagement></AdminRoute>
       },
+      
     ],
   },
   {
@@ -126,7 +144,8 @@ export const router = createBrowserRouter([
       {
         path:"Profile-Page",
         element:<EmployeeRouter><ProfilePage></ProfilePage></EmployeeRouter>
-      }
+      },
+      
     ],
   },
 ]);
