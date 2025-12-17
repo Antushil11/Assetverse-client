@@ -54,7 +54,7 @@ const Nabvar = () => {
   );
 
   return (
-    // sticky top-0 z-50
+   
     <div className="text-white bg-[#4A1FBF] ">
       <div className="navbar  max-w-7xl mx-auto shadow-sm  rounded-2xl">
         <div className="navbar-start ">
