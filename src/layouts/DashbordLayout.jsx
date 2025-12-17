@@ -1,18 +1,24 @@
 import React from "react";
-import { FaList } from "react-icons/fa";
+import { FaList, FaUsers } from "react-icons/fa";
 import { IoAdd } from "react-icons/io5";
 import { Link, NavLink, Outlet } from "react-router";
-import { LuPackagePlus } from "react-icons/lu";
-import { SiPhpmyadmin } from "react-icons/si";
+import { LuGitPullRequestArrow, LuPackagePlus } from "react-icons/lu";
+import { SiBookmyshow, SiPhpmyadmin } from "react-icons/si";
 import { RiSecurePaymentFill } from "react-icons/ri";
+import { MdCallReceived } from "react-icons/md";
+import useRole from "../hooks/useRole";
+import logo from "../../src/assets/Large version of the.png";
+import { GiAnatomy } from "react-icons/gi";
 
 const DashbordLayout = () => {
-  return ( 
-    <div className="drawer lg:drawer-open max-w-7xl mx-auto bg-white">
+  const { role } = useRole();
+
+  return (
+    <div className="drawer lg:drawer-open max-w-7xl mx-auto text-white bg-white">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         {/* Navbar */}
-        <nav className="navbar w-full bg-base-300">
+        <nav className="navbar w-full  border bg-secondary">
           <label
             htmlFor="my-drawer-4"
             aria-label="open sidebar"
@@ -34,105 +40,173 @@ const DashbordLayout = () => {
               <path d="M14 10l2 2l-2 2"></path>
             </svg>
           </label>
-          <div className="px-4"> HR Manager Dashboard</div>
+          <div className="px-4"> Dashboard</div>
         </nav>
         {/* Page content here */}
         <Outlet></Outlet>
-        
       </div>
 
-      <div className="drawer-side is-drawer-close:overflow-visible">
+      <div className="drawer-side is-drawer-close:overflow-visible ">
         <label
           htmlFor="my-drawer-4"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+        <div className="flex min-h-full flex-col items-start border bg-secondary is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
           <ul className="menu w-full grow">
             {/* List item */}
+
+           
+
             <li>
-              <Link
-              to={'/'}
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Homepage"
+              <NavLink
+                className="is-drawer-close:tooltip  is-drawer-close:tooltip-right"
+                data-tip="Asset-List"
+                to={"/"}
               >
-                {/* Home icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
-                >
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                </svg>
-                <span className="is-drawer-close:hidden">Homepage</span>
-              </Link>
+                <img src={logo} alt="" />
+                <span className="is-drawer-close:hidden w-46"> </span>
+              </NavLink>
             </li>
+
 
             {/* our dashbord link */}
 
-              <li>
-                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Asset-List" to={'/HR-Manager/Asset-List'}>
-                   <FaList />
-                   <span className="is-drawer-close:hidden"> Asset List</span>
-                 
-                 
-                 </NavLink>
-            </li>
+            {/* Admin */}
+            {role === "admin" && (
+              <>
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Asset-List"
+                    to={"/HR-Manager/Asset-List"}
+                  >
+                    <FaList />
+                    <span className="is-drawer-close:hidden"> Asset List</span>
+                  </NavLink>
+                </li>
 
-            <li>
-                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Add-an-Asset"   to={'/HR-Manager/Add-an-Asset'}>
-                  <IoAdd />
-                  <span className="is-drawer-close:hidden">Add-an-Asset</span>
-                  
-                 </NavLink>
-            </li>
-            <li>
-                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Upgrade-Package"   to={'/HR-Manager/Upgrade-Package'}>
-                  <LuPackagePlus />
-                  <span className="is-drawer-close:hidden">Upgrade Package</span>
-                  
-                 </NavLink>
-            </li>
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Add-an-Asset"
+                    to={"/HR-Manager/Add-an-Asset"}
+                  >
+                    <IoAdd />
+                    <span className="is-drawer-close:hidden">Add an Asset</span>
+                  </NavLink>
+                </li>
 
-            <li>
-                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Upgrade-Package"   to={'/HR-Manager/payment-history'}>
-                  <RiSecurePaymentFill />
-                  <span className="is-drawer-close:hidden">Payment History</span>
-                  
-                 </NavLink>
-            </li>
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="All-Requests"
+                    to={"/HR-Manager/All-Requests"}
+                  >
+                    <MdCallReceived />
+                    <span className="is-drawer-close:hidden">All Requests</span>
+                  </NavLink>
+                </li>
+
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Upgrade-Package"
+                    to={"/HR-Manager/Upgrade-Package"}
+                  >
+                    <LuPackagePlus />
+                    <span className="is-drawer-close:hidden">
+                      Upgrade Package
+                    </span>
+                  </NavLink>
+                </li>
+
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Payment History"
+                    to={"/HR-Manager/payment-history"}
+                  >
+                    <RiSecurePaymentFill />
+                    <span className="is-drawer-close:hidden">
+                      Payment History
+                    </span>
+                  </NavLink>
+                </li>
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="User-Management"
+                    to={"/HR-Manager/User-Management"}
+                  >
+                    <FaUsers></FaUsers>
+                    <span className="is-drawer-close:hidden">
+                      User Management
+                    </span>
+                  </NavLink>
+                </li>
+              </>
+            )}
 
             {/* Employee */}
-            <li>
-                <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="My-Assets"   to={'/Employee/My-Assets'}>
-                  <SiPhpmyadmin />
-                  <span className="is-drawer-close:hidden">My-Assets</span>
-                  
-                 </NavLink>
-            </li>
 
-          
-            
+            {role === "employee" && (
+              <>
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My-Assets"
+                    to={"/Employee/My-Assets"}
+                  >
+                    <SiPhpmyadmin />
+                    <span className="is-drawer-close:hidden">My Assets</span>
+                  </NavLink>
+                </li>
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Request-an-Asset"
+                    to={"/Employee/Request-an-Asset"}
+                  >
+                    <LuGitPullRequestArrow />
+                    <span className="is-drawer-close:hidden">
+                      Request an Asset
+                    </span>
+                  </NavLink>
+                </li>
+
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="My-Team"
+                    to={"/Employee/My-Team"}
+                  >
+                    <SiBookmyshow />
+                    <span className="is-drawer-close:hidden">My Team</span>
+                  </NavLink>
+                </li>
+
+                <li className="mt-2">
+                  <NavLink
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    data-tip="Profile-Page"
+                    to={"/Employee/Profile-Page"}
+                  >
+                    <GiAnatomy />
+                    <span className="is-drawer-close:hidden">Profile Page</span>
+                  </NavLink>
+                </li>
+              </>
+            )}
 
             {/* List item */}
-            <li>
+            {/* <li>
               <button
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                 data-tip="Settings"
               >
-                {/* Settings icon */}
+                
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -150,7 +224,7 @@ const DashbordLayout = () => {
                 </svg>
                 <span className="is-drawer-close:hidden">Settings</span>
               </button>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

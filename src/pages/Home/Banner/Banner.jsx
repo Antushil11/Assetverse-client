@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Banner() {
   return (
-    <section className="w-full mt-1  min-h-screen max-h-[800px] flex items-center justify-center bg-white p-6">
+    <section className="w-full mt-1 rounded-4xl  max-h-[800px] flex items-center justify-center bg-white p-12">
       <div className="grid md:grid-cols-2 gap-16 items-center max-w-7xl w-full">
         
         {/* Left content */}

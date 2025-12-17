@@ -1,22 +1,49 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
-import useAuth from './useAuth';
+import axios from "axios";
+import { useEffect, useMemo } from "react";
+import useAuth from "./useAuth";
+import { useNavigate } from "react-router";
 
-const axioSecure = axios.create({
-    baseURL:`http://localhost:3000`
-})
-const useAxoisSecure = () => {
-    const {user} = useAuth();
+const useAxiosSecure = () => {
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
 
-    useEffect(() =>{
-        axioSecure.interceptors.request.use(config => {
-            config.headers.Authorization = `Bearer ${user?.accessToken}`
-            return config
-        })
-    }, [user])
+  const axiosSecure = useMemo(() => {
+    return axios.create({
+      baseURL: "https://assetverse-server-gamma.vercel.app",
+    });
+  }, []);
 
+  useEffect(() => {
+    const reqInterceptor = axiosSecure.interceptors.request.use(
+      async (config) => {
+        if (user) {
+          const token = await user.getIdToken();
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+      },
+      (error) => Promise.reject(error)
+    );
 
-    return axioSecure
+    const resInterceptor = axiosSecure.interceptors.response.use(
+      (response) => response,
+      async (error) => {
+        const statusCode = error?.response?.status;
+        if (statusCode === 401 || statusCode === 403) {
+          await logOut();
+          navigate("/login");
+        }
+        return Promise.reject(error);
+      }
+    );
+
+    return () => {
+      axiosSecure.interceptors.request.eject(reqInterceptor);
+      axiosSecure.interceptors.response.eject(resInterceptor);
+    };
+  }, [user, logOut, navigate, axiosSecure]);
+
+  return axiosSecure;
 };
 
-export default useAxoisSecure;
+export default useAxiosSecure;

@@ -70,7 +70,7 @@ const Login = () => {
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button className="btn btn-neutral mt-4">Login</button>
+          <button className="btn bg-primary text-white mt-4 w-full py-2 px-4 rounded hover:bg-accent transition-colors">Login</button>
         </fieldset>
         {/* <p>New to AssetVerse <Link state={location.state} className="text-secondary"  to={'/register'}>Register</Link></p> */}
       </form>

@@ -1,7 +1,7 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxoisSecure from "../../hooks/useAxoisSecure";
-import PaymentHistory from "./PaymentHistory";
+
 
 
 const UpgradePackage = () => {
@@ -54,16 +54,16 @@ const UpgradePackage = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
+    <div className="max-w-7xl  mx-auto px-6 py-12 text-black">
       <h1 className="text-4xl font-bold text-center mb-10">
         Upgrade Your Package
       </h1>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-8 ">
         {packages.map((pack, index) => (
           <div
             key={index}
-            className="border rounded-xl shadow p-6 hover:shadow-xl transition"
+            className="border border-primary max-h-[800px] bg-white rounded-xl shadow p-6 hover:shadow-xl transition"
           >
             <h2 className="text-2xl font-bold mb-2">{pack.name}</h2>
 
@@ -91,9 +91,7 @@ const UpgradePackage = () => {
         ))}
       </div>
 
-      <div>
-        <PaymentHistory></PaymentHistory>
-      </div>
+      
     </div>
   );
 };

@@ -1,51 +1,61 @@
 import React, { useEffect, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 import useAxoisSecure from "../../hooks/useAxoisSecure";
 
+
+
 const PaymentHistory = () => {
+  const { user, loading } = useAuth();
+  const axiosSecure = useAxoisSecure()
   const [payments, setPayments] = useState([]);
-  const axiosSecure = useAxoisSecure();
 
   useEffect(() => {
     const fetchPayments = async () => {
+      if (!user || !axiosSecure) return;
+
       try {
-        const res = await axiosSecure.get("/payments"); // Fetch all payments
+        const res = await axiosSecure.get("/payments", {
+          params: { email: user.email },
+        });
         setPayments(res.data);
-      } catch (error) {
-        console.error("Failed to fetch payments:", error);
+      } catch (err) {
+        console.error("Failed to fetch payments:", err);
       }
     };
 
-    fetchPayments();
-  }, [axiosSecure]);
+    if (!loading) fetchPayments();
+  }, [user, loading, axiosSecure]);
+
+  if (loading || !axiosSecure) return <p>Loading...</p>;
 
   return (
-    <div className="p-6">
+    <div className="p-6 text-black">
       <h2 className="text-2xl font-bold mb-4">Payment History</h2>
       {payments.length === 0 ? (
         <p>No payments found.</p>
       ) : (
-        <table className="min-w-full border border-gray-300">
+        <table className="w-full border-collapse border border-primary">
           <thead>
             <tr className="bg-gray-200">
-              <th className="border px-4 py-2">HR Email</th>
-              <th className="border px-4 py-2">Package</th>
-              <th className="border px-4 py-2">Amount (USD)</th>
-              <th className="border px-4 py-2">Employees Limit</th>
-              <th className="border px-4 py-2">Date</th>
-              <th className="border px-4 py-2">Transaction ID</th>
+              <th className="border border-primary px-4 py-2">Transaction ID</th>
+              <th className="border border-primary  px-4 py-2">Package</th>
+              <th className="border border-primary px-4 py-2">Amount (USD)</th>
+              <th className="border border-primary px-4 py-2">Employee Limit</th>
+              <th className="border border-primary px-4 py-2">Status</th>
+              <th className="border border-primary px-4 py-2">Date</th>
             </tr>
           </thead>
           <tbody>
-            {payments.map((payment, index) => (
-              <tr key={`${payment.transactionId}-${index}`}>
-                <td className="border px-4 py-2">{payment.hrEmail}</td>
-                <td className="border px-4 py-2">{payment.packageName}</td>
-                <td className="border px-4 py-2">{payment.amount}</td>
-                <td className="border px-4 py-2">{payment.employeeLimit}</td>
-                <td className="border px-4 py-2">
+            {payments.map((payment) => (
+              <tr key={payment._id}>
+                <td className="border border-primary px-4 py-2">{payment.transactionId}</td>
+                <td className="border border-primary px-4 py-2">{payment.packageName}</td>
+                <td className="border border-primary px-4 py-2">{payment.amount}</td>
+                <td className="border border-primary px-4 py-2">{payment.employeeLimit}</td>
+                <td className="border border-primary px-4 py-2">{payment.status}</td>
+                <td className="border border-primary px-4 py-2">
                   {new Date(payment.paymentDate).toLocaleString()}
                 </td>
-                <td className="border px-4 py-2">{payment.transactionId}</td>
               </tr>
             ))}
           </tbody>

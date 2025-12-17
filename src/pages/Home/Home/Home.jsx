@@ -4,6 +4,7 @@ import About from '../About/About';
 import Features from '../Features/Features';
 import Testimonials from '../Testimonials/Testimonials';
 import ExtraSections from '../ExtraSections/ExtraSections';
+import UpgradePackage from '../../HRManager/UpgradePackage';
 
 
 
@@ -12,6 +13,7 @@ const Home = () => {
         <div >
             <Banner> </Banner>
             <About></About>
+            <UpgradePackage></UpgradePackage>
             <Features></Features>
             <Testimonials></Testimonials>
             <ExtraSections></ExtraSections>

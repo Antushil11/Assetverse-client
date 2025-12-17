@@ -31,10 +31,10 @@ const About = () => {
   ];
 
   return (
-    <section className="py-24  w-full flex justify-center px-6">
-      <div className="max-w-6xl w-full text-center space-y-12">
-        <h2 className="text-4xl font-bold text-gray-900">Why Choose AssetVerse?</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+    <section className="py-24  w-full flex justify-center px-6 ">
+      <div className="max-w-7xl w-full text-center space-y-12">
+        <h2 className="text-7xl font-bold text-gray-900">Why Choose AssetVerse?</h2>
+        <p className="text-gray-600 max-w-7xl mx-auto">
           AssetVerse offers innovative solutions tailored for modern businesses, ensuring security, efficiency, and scalability for your team.
         </p>
 

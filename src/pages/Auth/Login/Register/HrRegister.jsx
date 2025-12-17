@@ -4,6 +4,7 @@ import useAuth from "../../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocalLogin from "../../SocalLogin/SocalLogin";
 import axios from "axios";
+import useAxiosSecure from "../../../../hooks/useAxoisSecure";
 
 const HrRegister = () => {
   const {
@@ -11,6 +12,7 @@ const HrRegister = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const axiosSecure = useAxiosSecure()
 
   const { registerUser,updateUserProfile  } = useAuth();
 
@@ -36,6 +38,20 @@ const HrRegister = () => {
         axios.post(image_API_URL, formData)
         .then(res =>{
             console.log( 'after image upload',res.data.data.url)
+            const photoURL = res.data.data.url;
+
+             const userInfo = {
+              email: data.email,
+              displayName: data.name,
+              photoURL: photoURL,
+            }
+            axiosSecure.post('/users',userInfo)
+            .then(res =>{
+              if(res.data.insertedId){
+                console.log('user created in the data')
+              }
+            })
+
              //update user profile
             const userProfile ={
               displayName: data.name,
@@ -57,10 +73,13 @@ const HrRegister = () => {
         console.log(error);
       });
   };
+
+ 
+
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded shadow">
-      <h3 className="text-3xl text-center">Welcome</h3>
-      <p className="text-center">Please Register</p>
+    <div className="max-w-md mx-auto mt-10 p-6 border border-primary rounded shadow">
+      <h3 className="text-3xl text-center">HR Manager  Register</h3>
+      <p className="text-center">Please </p>
       <form onSubmit={handleSubmit(handleRegistrationHr)}>
         <fieldset className="fieldset">
           {/* name */}
@@ -113,6 +132,19 @@ const HrRegister = () => {
             <p className="text-red-600">Photo is Required</p>
           )}
 
+
+          
+          {/* Date of Birth */}
+        <label className="label">Date of Birth</label>
+        <input
+          type="date"
+          {...register("dateOfBirth", { required: "Date of Birth is required" })}
+          className="input"
+        />
+        {errors.dateOfBirth && (
+          <p className="text-red-600">{errors.dateOfBirth.message}</p>
+        )}
+
           {/* password */}
           <label className="label">Password</label>
           <input
@@ -148,12 +180,12 @@ const HrRegister = () => {
             Register
           </button>
         </fieldset>
-        {/* <p>
-          Already have a account{" "}
-          <Link state={location.state} className="text-secondary" to={"/login"}>
-            Login
+        <p>
+          New employee?{" "}
+          <Link state={location.state} className="text-red-600 hover:text-secondary" to={"/register"}>
+            Employee Register
           </Link>
-        </p> */}
+        </p>
       </form>
       <SocalLogin></SocalLogin>
     </div>

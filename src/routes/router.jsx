@@ -16,6 +16,15 @@ import HrRegister from "../pages/Auth/Login/Register/HrRegister";
 import PaymentSuccess from "../pages/HRManager/PaymentSuccess";
 import PaymentCancelled from "../pages/HRManager/PaymentCancelled";
 import PaymentHistory from "../pages/HRManager/PaymentHistory";
+import MyTeam from "../pages/Employee/MyTeam";
+import AllRequests from "../pages/HRManager/AllRequests";
+import UserManagement from "../pages/HRManager/UserManagement";
+import AdminRoute from "./AdminRoute";
+import RequestanAsset from "../pages/Employee/RequestanAsset";
+import EmployeeRouter from "./EmployeeRouter";
+import ProfilePage from "../pages/Employee/ProfilePage";
+
+
 
 
 export const router = createBrowserRouter([
@@ -60,27 +69,36 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "Add-an-Asset",
-        element: <AddanAsset />,
+        element: <AdminRoute><AddanAsset /></AdminRoute>,
       },
       {
         path: "Asset-List",
-        element: <AssetList />,
+        element: <AdminRoute><AssetList /></AdminRoute>,
+      },
+      {
+        path: "All-Requests",
+        element: <AdminRoute><AllRequests></AllRequests></AdminRoute>
       },
       {
         path: "Upgrade-Package",
-        element: <UpgradePackage />,
+        element: <AdminRoute><UpgradePackage /></AdminRoute>
+        
       },
       {
         path: "payment-success",
-        element: <PaymentSuccess></PaymentSuccess>,
+        element: <AdminRoute><PaymentSuccess></PaymentSuccess></AdminRoute>
       },
       {
         path: "payment-cancel",
-        element: <PaymentCancelled></PaymentCancelled>,
+        element: <AdminRoute><PaymentCancelled></PaymentCancelled></AdminRoute>
       },
       {
         path: "payment-history",
-        element: <PaymentHistory></PaymentHistory>
+        element: <AdminRoute><PaymentHistory></PaymentHistory></AdminRoute>
+      },
+      {
+        path: "User-Management",
+        element: <AdminRoute><UserManagement></UserManagement></AdminRoute>
       },
     ],
   },
@@ -95,8 +113,20 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "My-Assets",
-        element: <MyAssets />,
+        element: <EmployeeRouter><MyAssets /></EmployeeRouter>,
       },
+      {
+        path: "My-Team",
+        element: <EmployeeRouter><MyTeam></MyTeam></EmployeeRouter>,
+      },
+      {
+        path:"Request-an-Asset",
+        element:<EmployeeRouter><RequestanAsset></RequestanAsset></EmployeeRouter>
+      },
+      {
+        path:"Profile-Page",
+        element:<EmployeeRouter><ProfilePage></ProfilePage></EmployeeRouter>
+      }
     ],
   },
 ]);

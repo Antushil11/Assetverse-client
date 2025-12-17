@@ -1,34 +1,48 @@
 import React from "react";
 import useAuth from "../../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
-
+import useAxiosSecure from "../../../hooks/useAxoisSecure";
 
 const SocalLogin = () => {
-    const {signInGoogle} = useAuth()
-    const location = useLocation();
-  
-    const navigate = useNavigate();
-   
+  const { signInGoogle } = useAuth();
+  const location = useLocation();
+  const axiosSecure = useAxiosSecure();
 
-    const handleGoogleSignIn = () =>{
-        signInGoogle()
-        .then(result =>{
-            console.log(result)
-            navigate(location?.state || '/')
-        })
-        .catch(error =>{
-            console.log(error)
-        })
+  const navigate = useNavigate();
 
-    }
+  const handleGoogleSignIn = () => {
+    signInGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate(location?.state || "/");
+        //create user in the database
+        const userInfo = {
+          email: result.user.email,
+          displayName: result.user.displayName,
+          photoURL: result.user.photoURL,
+        };
+
+        axiosSecure.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            console.log("user created in the data");
+          }
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="text-center">
-      <p><span className="text-primary">----------</span> or <span className="text-primary">----------</span></p>
+      <p>
+        <span className="text-primary">----------</span> or{" "}
+        <span className="text-primary">----------</span>
+      </p>
       {/* Google */}
       <button
-    onClick={handleGoogleSignIn}
-      
-      className="btn bg-white text-black border-[#e5e5e5]">
+        onClick={handleGoogleSignIn}
+        className="btn bg-white text-black border-[#e5e5e5]"
+      >
         <svg
           aria-label="Google logo"
           width="16"

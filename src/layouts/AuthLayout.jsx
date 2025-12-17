@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../../src/assets/Logo design for Asse.png";
+import logo from "../../src/assets/AssetVerse logo with.png";
 import { Link, Outlet } from 'react-router';
 const AuthLayout = () => {
     return (

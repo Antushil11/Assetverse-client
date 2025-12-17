@@ -69,7 +69,7 @@ const AddanAsset = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6">
+    <div className="max-w-xl mx-auto p-6 text-black">
       <h2 className="text-3xl font-bold mb-6">Add an Asset</h2>
 
       <form onSubmit={handleSubmit(handleAddAsset)} className="space-y-4">

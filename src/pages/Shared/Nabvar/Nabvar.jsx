@@ -1,31 +1,40 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../../assets/Logo design for Asse.png";
+import logo from "../../../assets/AssetVerse logo with.png";
 import useAuth from "../../../hooks/useAuth";
+import useRole from "../../../hooks/useRole";
 
 const Nabvar = () => {
-  const {user,logOut} = useAuth()
+  const { user, logOut } = useAuth();
+  const { role } = useRole();
 
-  const handleLogOut = () =>{
+  const handleLogOut = () => {
     logOut()
-    .then(result =>{
-      console.log(result)
-    })
-    .catch(error =>{
-      console.log(error)
-    })
-  }
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const links = (
     <>
-   
-      <li className=" ">
+      <li className="mr-2">
         <NavLink to="/">Home</NavLink>
       </li>
 
-       <li><NavLink to={"/HR-Manager"}>HR Manager</NavLink></li>
-       <li><NavLink to={"/Employee"}>Employee</NavLink></li>
+      {role === "admin" && (
+        <li>
+          <NavLink to={"/HR-Manager"}>Join as HR Manager</NavLink>
+        </li>
+      )}
 
-        
+      {role === "employee" && (
+        <li>
+          <NavLink to={"/Employee"}>Join as Employee</NavLink>
+        </li>
+      )}
+
       {/* <li className="" >
         <details>
           <summary>Join as Employee</summary>
@@ -57,6 +66,7 @@ const Nabvar = () => {
       </li> */}
     </>
   );
+
   return (
     // sticky top-0 z-50
     <div className="text-white bg-[#4A1FBF] ">
@@ -87,7 +97,10 @@ const Nabvar = () => {
               {links}
             </ul>
           </div>
-          <a href="/" className="btn btn-ghost hover:bg-transparent hover:border-none normal-case text-xl">
+          <a
+            href="/"
+            className="btn btn-ghost hover:bg-transparent hover:border-none normal-case text-xl"
+          >
             <img className="w-40" src={logo} alt="" />
           </a>
         </div>
@@ -95,32 +108,51 @@ const Nabvar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          {
-            user ? 
+          {user ? (
+            (user === "admin" ? (
+              <li>
+                <NavLink to={"/HR-Manager"}>HR Manager</NavLink>
+              </li>
+            ) : (
+              <li>
+                <NavLink to={"/Employee"}>Employee</NavLink>
+              </li>
+            ),
             (
-            <div className="flex">
-              <div tabIndex={0} role="button" className="w-12 rounded-full">
-                <img
-                  className="rounded-full border-2 border-white cursor-pointer"
-                  src={user.photoURL || "https://via.placeholder.com/150"}
-                  alt="profile"
-                />
+              <div className="flex items-center justify-center">
+                <div tabIndex={0} role="button" className="w-12 rounded-full">
+                  <img
+                    className="rounded-full border-2 border-white cursor-pointer"
+                    src={user.photoURL || "https://via.placeholder.com/150"}
+                    alt="profile"
+                  />
+                </div>
+
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content p-2 shadow bg-[#4A1FBF] rounded-box w-40"
+                >
+                  <li>
+                    <button
+                      className="btn btn-primary text-[14px]"
+                      onClick={handleLogOut}
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
               </div>
-
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-[#4A1FBF] rounded-box w-40"
-              >
-                
-                <li><button onClick={handleLogOut}>Logout</button></li>
-              </ul>
+            ))
+          ) : (
+            <div className="">
+              <Link to={"/login"} className="btn bg-primary text-white mr-2">
+                Log in
+              </Link>
+              <Link to={"/register"} className="btn bg-primary text-white">
+                Register
+              </Link>
             </div>
-          )
-            
-
-            : <Link to={'/login'} className="btn bg-primary">Log in</Link>
-            
-          }
+          )}
         </div>
       </div>
     </div>
