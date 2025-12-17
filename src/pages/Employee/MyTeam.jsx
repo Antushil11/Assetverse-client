@@ -59,27 +59,7 @@ const MyTeam = () => {
       </div>
 
       {/* Upcoming Birthdays */}
-      {/* {upcomingBirthdays.length > 0 && (
-        <div className="mb-6 ">
-          <h3 className="text-xl font-semibold mb-2">Upcoming Birthdays</h3>
-          <div className="flex flex-wrap gap-4">
-            {upcomingBirthdays.map((e) => (
-              <div
-                key={e._id}
-                className="card bg-yellow-100 w-48 p-4 rounded shadow text-center "
-              >
-                <img
-                  src={e.photoURL || "/default-avatar.png"}
-                  alt={e.name}
-                  className="w-16 h-16 rounded-full mx-auto mb-2"
-                />
-                <p className="font-medium">{e.name}</p>
-                <p className="text-sm">{dayjs(e.dateOfBirth).format("DD MMM")}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )} */}
+      
 
       {/* Employee List */}
       <div className="flex flex-wrap gap-6  ">
