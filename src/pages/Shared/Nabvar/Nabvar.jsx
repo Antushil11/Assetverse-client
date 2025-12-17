@@ -37,35 +37,7 @@ const Nabvar = () => {
       </li>
      } 
 
-      {/* <li className="" >
-        <details>
-          <summary>Join as Employee</summary>
-          <ul className="p-2  w-40 z-1 bg-secondary">
-            <li>
-              <NavLink>My Assets</NavLink>
-            </li>
-            <li>
-              <NavLink>My Team</NavLink>
-              <NavLink>Request Asset</NavLink>
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li className="">
-        <details>
-          <summary>Join as HR Manager</summary>
-          <ul className="p-2  w-40 z-1 bg-secondary">
-            <li>
-              <NavLink>Asset List</NavLink>
-            </li>
-            <li>
-              <NavLink>Add Asset</NavLink>
-              <NavLink>All Requests</NavLink>
-              <NavLink>Employee List</NavLink>
-            </li>
-          </ul>
-        </details>
-      </li> */}
+      
 
       <li className=" ">
         <NavLink to="/CaseStudies">Case Studies</NavLink>
