@@ -26,7 +26,7 @@ const RecentWork = () => {
   ];
 
   return (
-    <div className="pt-26">
+    <div className="pt-24">
       <section id="recent-work" className="py-20  bg-gray-50  rounded-2xl">
         <div className="container mx-auto px-6 md:px-20">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">

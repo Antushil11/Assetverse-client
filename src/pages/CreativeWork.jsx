@@ -37,7 +37,7 @@ const CreativeWork = () => {
   ];
 
   return (
-    <div className="pt-26">
+    <div className="pt-24">
       <section
         id="creative-work"
         className="py-20  bg-gray-50  rounded-2xl "
