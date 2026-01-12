@@ -7,8 +7,8 @@ export default function ExtraSections() {
 
   
       <section className="max-w-7xl mx-auto text-center px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">How It Works.</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold  text-gray-900">How It Works.</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-4">
           Follow these 3 simple steps to get started with our platform.
         </p>
 
@@ -32,10 +32,10 @@ export default function ExtraSections() {
 
       
       <section className="max-w-7xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
           Frequently Asked Questions
         </h2>
-        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-10">
+        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-4">
           Find quick answers to the most common questions.
         </p>
 

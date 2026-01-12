@@ -32,8 +32,8 @@ const About = () => {
 
   return (
     <section className="py-24  w-full flex justify-center px-6 ">
-      <div className="max-w-7xl w-full text-center space-y-12">
-        <h2 className="text-4xl font-bold text-center mb-10">Why Choose AssetVerse?</h2>
+      <div className="max-w-7xl w-full text-center space-y-4">
+        <h2 className="text-4xl font-bold text-center ">Why Choose AssetVerse?</h2>
         <p className="text-gray-600 max-w-7xl mx-auto">
           AssetVerse offers innovative solutions tailored for modern businesses, ensuring security, efficiency, and scalability for your team.
         </p>
@@ -53,7 +53,7 @@ const About = () => {
         >
           {benefits.map((benefit, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all text-center m-2">
+              <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all text-center ">
                 <benefit.icon className="w-14 h-14 mx-auto text-primary mb-6" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
                 <p className="text-gray-600 text-sm">{benefit.description}</p>

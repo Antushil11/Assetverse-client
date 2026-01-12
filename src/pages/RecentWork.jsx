@@ -23,7 +23,7 @@ const RecentWork = () => {
   ];
 
   return (
-    <section id="recent-work" className="py-20 bg-gray-50 mt-2 rounded-2xl">
+    <section id="recent-work" className="py-20 mt-22 bg-gray-50  rounded-2xl">
       <div className="container mx-auto px-6 md:px-20">
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">
           Recent Work

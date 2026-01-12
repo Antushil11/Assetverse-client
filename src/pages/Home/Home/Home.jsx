@@ -10,7 +10,7 @@ import UpgradePackage from '../../HRManager/UpgradePackage';
 
 const Home = () => {
     return (
-        <div >
+        <div className='mt-22 bg-[#A275FF]'>
             <Banner> </Banner>
             <About></About>
             <UpgradePackage></UpgradePackage>

@@ -48,8 +48,8 @@ const Nabvar = () => {
   );
 
   return (
-    <div className="text-white bg-[#4A1FBF] ">
-      <div className="navbar  max-w-7xl mx-auto shadow-sm  rounded-2xl">
+    <div className="  text-white bg-[#4A1FBF] navbar  fixed   top-0 mx-auto">
+      <div className="navbar  max-w-7xl  mx-auto shadow-sm  rounded-2xl ">
         <div className="navbar-start ">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -83,8 +83,8 @@ const Nabvar = () => {
             <img className="w-40" src={logo} alt="" />
           </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+        <div className="navbar-center hidden lg:flex ">
+          <ul className="menu menu-horizontal px-1  ">{links}</ul>
         </div>
         <div className="navbar-end">
           {user ? (

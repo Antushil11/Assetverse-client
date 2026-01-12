@@ -31,7 +31,7 @@ const Testimonials = () => {
 
   return (
     <section className="py-24  w-full flex justify-center px-6">
-      <div className="max-w-7xl w-full space-y-16">
+      <div className="max-w-7xl w-full space-y-4">
 
         <div className="text-center space-y-4">
           <h2 className="text-4xl font-bold text-gray-900">What Our Clients Say</h2>
@@ -62,7 +62,7 @@ const Testimonials = () => {
           ))}
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-8 text-center py-10 bg-gray-50 rounded-3xl shadow-inner">
+        <div className="grid sm:grid-cols-3 gap-8 mt-12 text-center py-10 bg-gray-50 rounded-3xl shadow-inner">
           {stats.map((s, index) => (
             <div key={index} className="space-y-2 transition-all hover:scale-105">
               <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-gradient-to-br from-primary to-primary/80 text-white">
