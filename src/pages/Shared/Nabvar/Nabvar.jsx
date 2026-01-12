@@ -18,33 +18,33 @@ const Nabvar = () => {
       });
   };
   const links = (
-    <div className="flex items-center justify-center gap-2">
-      <li className=" ">
+    <>
+      <li className=" ml-2">
         <NavLink to="/">Home</NavLink>
       </li>
 
       {role === "admin" && (
-        <li>
+        <li className=" ml-2">
           <NavLink to={"/HR-Manager"}>HR Manager</NavLink>
         </li>
       )}
 
       {role === "employee" && (
-        <li>
+        <li className=" ml-2">
           <NavLink to={"/Employee"}>Employee</NavLink>
         </li>
       )}
 
-      <li className=" ">
+      <li className=" ml-2">
         <NavLink to="/CaseStudies">Case Studies</NavLink>
       </li>
-      <li className=" ">
+      <li className="ml-2 ">
         <NavLink to="/RecentWork">Recent Work</NavLink>
       </li>
-      <li className=" ">
+      <li className="ml-2 ">
         <NavLink to="/Creative-Work">Creative Work</NavLink>
       </li>
-    </div>
+    </>
   );
 
   return (
@@ -71,7 +71,7 @@ const Nabvar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-secondary rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className=" menu menu-sm dropdown-content bg-secondary rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
