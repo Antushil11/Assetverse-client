@@ -78,7 +78,7 @@ const DashbordLayout = () => {
               <>
                 <li className="mt-2">
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right "
                     data-tip="Asset-List"
                     to={"/HR-Manager/Asset-List"}
                   >
@@ -155,7 +155,7 @@ const DashbordLayout = () => {
               <>
                 <li className="mt-2">
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:text-primary"
                     data-tip="My-Assets"
                     to={"/Employee/My-Assets"}
                   >
@@ -165,7 +165,7 @@ const DashbordLayout = () => {
                 </li>
                 <li className="mt-2">
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:text-primary"
                     data-tip="Request-an-Asset"
                     to={"/Employee/Request-an-Asset"}
                   >
@@ -178,7 +178,7 @@ const DashbordLayout = () => {
 
                 <li className="mt-2">
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:text-primary"
                     data-tip="My-Team"
                     to={"/Employee/My-Team"}
                   >
@@ -189,7 +189,7 @@ const DashbordLayout = () => {
 
                 <li className="mt-2">
                   <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:text-primary"
                     data-tip="Profile-Page"
                     to={"/Employee/Profile-Page"}
                   >

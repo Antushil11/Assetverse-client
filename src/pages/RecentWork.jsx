@@ -47,7 +47,7 @@ const RecentWork = () => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 font-medium"
+                  className="text-primary  font-medium"
                 >
                   View Project
                 </a>

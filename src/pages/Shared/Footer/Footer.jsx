@@ -22,7 +22,7 @@ const Footer = () => {
           <h3 className="text-xl font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2">
             <li>
-              <Link to="/" className="hover:text-primary">
+              <Link to="/" className="hover:text-primary ml">
                 Home
               </Link>
             </li>
@@ -64,16 +64,16 @@ const Footer = () => {
           </p>
 
           <div className="flex gap-4 mt-4 text-xl">
-            <a href="#" className="hover:text-primary">
+            <a href="https://www.facebook.com/" className="hover:text-primary">
               <FaFacebook />
             </a>
-            <a href="#" className="hover:text-primary">
+            <a href="https://x.com/" className="hover:text-primary">
               <FaTwitter />
             </a>
-            <a href="#" className="hover:text-primary">
+            <a href="https://www.instagram.com/accounts/login/?hl=en" className="hover:text-primary">
               <FaInstagram />
             </a>
-            <a href="#" className="hover:text-primary">
+            <a href="https://www.linkedin.com/" className="hover:text-primary">
               <FaLinkedin />
             </a>
           </div>

@@ -10,6 +10,7 @@ const useAxiosSecure = () => {
   const axiosSecure = useMemo(() => {
     return axios.create({
       baseURL: "https://assetverse-server-gamma.vercel.app",
+      
     });
   }, []);
 

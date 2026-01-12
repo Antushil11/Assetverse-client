@@ -53,9 +53,9 @@ const MyTeam = () => {
       
 
       {/* Employee List */}
-      <div className="flex flex-wrap gap-6  ">
+      <div className=" gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         {filteredEmployees.map((employee) => (
-          <div key={employee._id} className="card bg-base-100 w-64 shadow rounded border border-[#00C578] hover:shadow-2xl hover:-translate-y-2 hover:border-primary">
+          <div key={employee._id} className="card bg-base-100 max-w-full shadow rounded border border-[#00C578] hover:shadow-2xl hover:-translate-y-2 hover:border-primary">
             <figure className="px-6 pt-6">
               <img
                 src={employee.photoURL || "/default-avatar.png"}

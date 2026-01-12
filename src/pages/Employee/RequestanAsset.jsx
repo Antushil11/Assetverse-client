@@ -65,7 +65,7 @@ const RequestanAsset = () => {
 
       <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {parcels.map((parcel) => (
-          <div key={parcel._id} className="card bg-base-100 w-96  shadow-sm">
+          <div key={parcel._id} className="card bg-base-100 max-w-full  shadow-sm">
             <figure className="px-10 pt-10">
               <img src={parcel.image} alt="Shoes" className="rounded-xl" />
             </figure>

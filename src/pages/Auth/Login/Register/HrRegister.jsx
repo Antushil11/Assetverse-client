@@ -187,7 +187,9 @@ const HrRegister = () => {
           </Link>
         </p>
       </form>
-      <SocalLogin></SocalLogin>
+     
+       <SocalLogin></SocalLogin>
+     
     </div>
   );
 };
