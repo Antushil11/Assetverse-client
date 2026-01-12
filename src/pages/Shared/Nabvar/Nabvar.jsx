@@ -48,7 +48,7 @@ const Nabvar = () => {
   );
 
   return (
-    <div className="  text-white bg-[#4A1FBF] navbar  fixed   top-0 mx-auto">
+    <div className="  text-white bg-[#4A1FBF] navbar  fixed   top-0 z-50 mx-auto">
       <div className="navbar  max-w-7xl  mx-auto shadow-sm  rounded-2xl ">
         <div className="navbar-start ">
           <div className="dropdown">

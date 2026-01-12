@@ -30,7 +30,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24  w-full flex justify-center px-6">
+    <section className="py-24   w-full flex justify-center px-6">
       <div className="max-w-7xl w-full space-y-4">
 
         <div className="text-center space-y-4">
