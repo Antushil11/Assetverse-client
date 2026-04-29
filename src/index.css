@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 @import "tailwindcss";
 @plugin "daisyui"{
@@ -8,21 +9,74 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #00C578;
-  --color-secondary: #4A1FBF;
-  --color-accent: #A275FF;
+  --color-primary: #4F46E5;
+  --color-secondary: #0F172A;
+  --color-accent: #10B981;
+}
+
+:root {
+  --primary: #4F46E5;
+  --secondary: #0F172A;
+  --accent: #10B981;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "Urbanist", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  background-color: rgb(162, 117, 255);
- 
+  background-color: #F8FAFC;
+  background-image: 
+    radial-gradient(#E2E8F0 0.5px, transparent 0.5px), 
+    radial-gradient(#E2E8F0 0.5px, #F8FAFC 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  color: #0F172A;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-a.active {
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary); 
-  border-radius: 4px; 
-  padding: 2px 4px;   
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Outfit", sans-serif;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.nav-link-active {
+  background-color: var(--primary);
+  color: white !important;
 }

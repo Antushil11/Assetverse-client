@@ -1,0 +1,10 @@
+[
+  { "district": "Dhaka", "latitude": 23.8103, "longitude": 90.4125, "covered_area": ["Mirpur", "Gulshan", "Dhanmondi"] },
+  { "district": "Chittagong", "latitude": 22.3569, "longitude": 91.7832, "covered_area": ["Pahartali", "Kotwali", "Bakalia"] },
+  { "district": "Sylhet", "latitude": 24.8949, "longitude": 91.8687, "covered_area": ["Zindabazar", "Amberkhana", "South Surma"] },
+  { "district": "Rajshahi", "latitude": 24.3745, "longitude": 88.6042, "covered_area": ["Boalia", "Motihar", "Rajpara"] },
+  { "district": "Khulna", "latitude": 22.8456, "longitude": 89.5403, "covered_area": ["Khalishpur", "Daulatpur", "Sonadanga"] },
+  { "district": "Barisal", "latitude": 22.7010, "longitude": 90.3535, "covered_area": ["Sadar", "Babuganj", "Bakerganj"] },
+  { "district": "Rangpur", "latitude": 25.7439, "longitude": 89.2752, "covered_area": ["Sadar", "Pirganj", "Mithapukur"] },
+  { "district": "Mymensingh", "latitude": 24.7471, "longitude": 90.4203, "covered_area": ["Sadar", "Muktagacha", "Fulbaria"] }
+]

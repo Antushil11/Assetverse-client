@@ -5,14 +5,15 @@ import Navbar from "../pages/Shared/Nabvar/Nabvar";
 
 const RootLayout = () => {
   return (
-    <div className="">
-      <Navbar></Navbar>
-      <div className="min-h-screen max-w-7xl mx-auto">
-        <Outlet></Outlet>
-      </div>
-      <Footer></Footer>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 };
 
 export default RootLayout;
+

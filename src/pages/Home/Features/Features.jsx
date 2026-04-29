@@ -1,68 +1,92 @@
 import React from "react";
-import { ShieldCheck, Users, Zap, FolderKanban, Cloud, BarChart3 } from "lucide-react";
+import { ShieldCheck, Users, Zap, FolderKanban, Cloud, BarChart3, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Features() {
   const features = [
     {
       icon: ShieldCheck,
-      title: "Enterprise Security",
-      desc: "Advanced protection to keep your business data safe.",
+      title: "Enterprise Guard",
+      desc: "Bank-grade encryption and advanced threat detection for all corporate data.",
+      color: "blue"
     },
     {
       icon: Users,
-      title: "Team Collaboration",
-      desc: "Work together seamlessly with a connected workspace.",
+      title: "Sync Workforce",
+      desc: "Centralized collaboration hub for distributed global teams.",
+      color: "emerald"
     },
     {
       icon: Zap,
-      title: "Lightning Performance",
-      desc: "Fast and optimized system for greater productivity.",
+      title: "Instant Response",
+      desc: "Optimized infrastructure ensuring millisecond latency across operations.",
+      color: "primary"
     },
     {
       icon: FolderKanban,
-      title: "Smart Asset Management",
-      desc: "Organize and manage all your files in one place.",
+      title: "Asset Intelligence",
+      desc: "AI-driven organization and automated tagging for enterprise resources.",
+      color: "indigo"
     },
     {
       icon: Cloud,
-      title: "Cloud Integration",
-      desc: "Access your platform from anywhere, anytime.",
+      title: "Cloud Native",
+      desc: "High-availability cloud infrastructure with 99.99% uptime guarantee.",
+      color: "amber"
     },
     {
       icon: BarChart3,
-      title: "Analytics Insights",
-      desc: "Track performance with real-time analytics.",
+      title: "Precision Analytics",
+      desc: "Real-time decision support with interactive executive dashboards.",
+      color: "red"
     },
   ];
 
   return (
-    <section className="py-24 bg-gray-50 w-full flex justify-center px-6 rounded-2xl">
-      <div className="max-w-7xl w-full text-center space-y-4">
-        <h2 className="text-4xl font-bold text-gray-900">Features That Help You Grow</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Discover the powerful tools designed to make your business smarter and more efficient.
+    <section className="container mx-auto px-6">
+      <div className="text-center space-y-4 mb-20">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-[10px] font-black uppercase tracking-widest">
+          Powerful Capabilities
+        </div>
+        <h2 className="text-5xl font-black text-gray-900 tracking-tighter">
+          Engineered for <span className="text-primary">Performance.</span>
+        </h2>
+        <p className="text-gray-500 font-medium max-w-2xl mx-auto">
+          Discover the industrial-grade tools designed to scale your operations and protect your most valuable resources.
         </p>
+      </div>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {features.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary"
-            >
-              <div className="w-20 h-20 mx-auto flex items-center justify-center rounded-2xl 
-              bg-gradient-to-br from-primary to-primary/70 
-              transition-all duration-300 
-              hover:from-primary/70 hover:to-primary 
-              transform hover:scale-110 mb-6">
-                <item.icon className="w-10 h-10 text-white" />
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {features.map((item, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="group relative bg-white p-10 rounded-[48px] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 overflow-hidden"
+          >
+            {/* Background Accent */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-full translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+
+            <div className="relative z-10">
+              <div className="w-16 h-16 rounded-2xl bg-gray-900 text-white flex items-center justify-center mb-8 group-hover:bg-primary group-hover:scale-110 transition-all duration-500 shadow-lg">
+                <item.icon size={28} />
               </div>
 
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-              <p className="text-gray-600 text-sm">{item.desc}</p>
+              <h3 className="text-2xl font-black text-gray-900 mb-4 tracking-tight">{item.title}</h3>
+              <p className="text-gray-500 font-medium leading-relaxed mb-8">
+                {item.desc}
+              </p>
+
+              <button className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary hover:gap-3 transition-all">
+                Learn More <ArrowRight size={14} />
+              </button>
             </div>
-          ))}
-        </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
 }
+

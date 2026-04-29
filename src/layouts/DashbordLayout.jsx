@@ -1,235 +1,139 @@
 import React from "react";
-import { FaList, FaUsers } from "react-icons/fa";
-import { IoAdd } from "react-icons/io5";
-import { Link, NavLink, Outlet } from "react-router";
-import { LuGitPullRequestArrow, LuPackagePlus } from "react-icons/lu";
-import { SiBookmyshow, SiPhpmyadmin } from "react-icons/si";
-import { RiSecurePaymentFill } from "react-icons/ri";
-import { MdCallReceived } from "react-icons/md";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { 
+  LayoutDashboard, 
+  List, 
+  PlusSquare, 
+  ClipboardList, 
+  Package, 
+  History, 
+  Users, 
+  UserCircle, 
+  Bell, 
+  Search,
+  ChevronRight,
+  LogOut,
+  ShieldCheck
+} from "lucide-react";
 import useRole from "../hooks/useRole";
-import logo from "../../src/assets/Large version of the.png";
-import { GiAnatomy } from "react-icons/gi";
+import useAuth from "../hooks/useAuth";
+import logo from "/src/assets/Large version of the.png";
 
 const DashbordLayout = () => {
   const { role } = useRole();
+  const { user, logOut } = useAuth();
+
+  const adminLinks = [
+    { name: "Asset List", path: "/HR-Manager/Asset-List", icon: List },
+    { name: "Add an Asset", path: "/HR-Manager/Add-an-Asset", icon: PlusSquare },
+    { name: "All Requests", path: "/HR-Manager/All-Requests", icon: ClipboardList },
+    { name: "Upgrade Package", path: "/HR-Manager/Upgrade-Package", icon: Package },
+    { name: "Payment History", path: "/HR-Manager/payment-history", icon: History },
+    { name: "User Management", path: "/HR-Manager/User-Management", icon: Users },
+  ];
+
+  const employeeLinks = [
+    { name: "My Assets", path: "/Employee/My-Assets", icon: Package },
+    { name: "Request an Asset", path: "/Employee/Request-an-Asset", icon: PlusSquare },
+    { name: "My Team", path: "/Employee/My-Team", icon: Users },
+    { name: "Profile Page", path: "/Employee/Profile-Page", icon: UserCircle },
+  ];
+
+  const links = (role === "admin" || role === "hr") ? adminLinks : employeeLinks;
 
   return (
-    <div className="drawer lg:drawer-open max-w-7xl mx-auto text-white bg-white">
-      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
-        {/* Navbar */}
-        <nav className="navbar w-full  border bg-secondary">
-          <label
-            htmlFor="my-drawer-4"
-            aria-label="open sidebar"
-            className="btn btn-square btn-ghost"
-          >
-            {/* Sidebar toggle icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2"
-              fill="none"
-              stroke="currentColor"
-              className="my-1.5 inline-block size-4"
-            >
-              <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-              <path d="M9 4v16"></path>
-              <path d="M14 10l2 2l-2 2"></path>
-            </svg>
-          </label>
-          <div className="px-4"> Dashboard</div>
-        </nav>
-        {/* Page content here */}
-        <Outlet></Outlet>
-      </div>
-
-      <div className="drawer-side is-drawer-close:overflow-visible ">
-        <label
-          htmlFor="my-drawer-4"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
-        <div className="flex min-h-full flex-col items-start border bg-secondary is-drawer-close:w-14 is-drawer-open:w-64">
-          {/* Sidebar content here */}
-          <ul className="menu w-full grow">
-            {/* List item */}
-
-           
-
-            <li>
-              <NavLink
-                className="is-drawer-close:tooltip  is-drawer-close:tooltip-right"
-                data-tip="Asset-List"
-                to={"/"}
-              >
-                <img src={logo} alt="" />
-                <span className="is-drawer-close:hidden w-46"> </span>
-              </NavLink>
-            </li>
-
-
-            {/* our dashbord link */}
-
-            {/* Admin */}
-            {role === "admin" && (
-              <>
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right "
-                    data-tip="Asset-List"
-                    to={"/HR-Manager/Asset-List"}
-                  >
-                    <FaList />
-                    <span className="is-drawer-close:hidden"> Asset List</span>
-                  </NavLink>
-                </li>
-
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Add-an-Asset"
-                    to={"/HR-Manager/Add-an-Asset"}
-                  >
-                    <IoAdd />
-                    <span className="is-drawer-close:hidden">Add an Asset</span>
-                  </NavLink>
-                </li>
-
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="All-Requests"
-                    to={"/HR-Manager/All-Requests"}
-                  >
-                    <MdCallReceived />
-                    <span className="is-drawer-close:hidden">All Requests</span>
-                  </NavLink>
-                </li>
-
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Upgrade-Package"
-                    to={"/HR-Manager/Upgrade-Package"}
-                  >
-                    <LuPackagePlus />
-                    <span className="is-drawer-close:hidden">
-                      Upgrade Package
-                    </span>
-                  </NavLink>
-                </li>
-
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Payment History"
-                    to={"/HR-Manager/payment-history"}
-                  >
-                    <RiSecurePaymentFill />
-                    <span className="is-drawer-close:hidden">
-                      Payment History
-                    </span>
-                  </NavLink>
-                </li>
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="User-Management"
-                    to={"/HR-Manager/User-Management"}
-                  >
-                    <FaUsers></FaUsers>
-                    <span className="is-drawer-close:hidden">
-                      User Management
-                    </span>
-                  </NavLink>
-                </li>
-              </>
-            )}
-
-            {/* Employee */}
-
-            {role === "employee" && (
-              <>
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:text-primary"
-                    data-tip="My-Assets"
-                    to={"/Employee/My-Assets"}
-                  >
-                    <SiPhpmyadmin />
-                    <span className="is-drawer-close:hidden">My Assets</span>
-                  </NavLink>
-                </li>
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:text-primary"
-                    data-tip="Request-an-Asset"
-                    to={"/Employee/Request-an-Asset"}
-                  >
-                    <LuGitPullRequestArrow />
-                    <span className="is-drawer-close:hidden">
-                      Request an Asset
-                    </span>
-                  </NavLink>
-                </li>
-
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:text-primary"
-                    data-tip="My-Team"
-                    to={"/Employee/My-Team"}
-                  >
-                    <SiBookmyshow />
-                    <span className="is-drawer-close:hidden">My Team</span>
-                  </NavLink>
-                </li>
-
-                <li className="mt-2">
-                  <NavLink
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right hover:text-primary"
-                    data-tip="Profile-Page"
-                    to={"/Employee/Profile-Page"}
-                  >
-                    <GiAnatomy />
-                    <span className="is-drawer-close:hidden">Profile Page</span>
-                  </NavLink>
-                </li>
-              </>
-            )}
-
-            {/* List item */}
-            {/* <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                data-tip="Settings"
-              >
-                
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
-                >
-                  <path d="M20 7h-9"></path>
-                  <path d="M14 17H5"></path>
-                  <circle cx="17" cy="17" r="3"></circle>
-                  <circle cx="7" cy="7" r="3"></circle>
-                </svg>
-                <span className="is-drawer-close:hidden">Settings</span>
-              </button>
-            </li> */}
-          </ul>
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <aside className="w-72 bg-white border-r border-gray-100 flex flex-col fixed inset-y-0 z-50 transition-transform duration-300 transform lg:translate-x-0">
+        <div className="p-8 border-b border-gray-50 flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 group-hover:rotate-6 transition-transform">
+              <ShieldCheck size={24} />
+            </div>
+            <span className="text-xl font-black text-gray-900 tracking-tight">AssetVerse</span>
+          </Link>
         </div>
-      </div>
+
+        <nav className="flex-grow p-6 space-y-2 overflow-y-auto">
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-4 px-4">Management</p>
+          {links.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              className={({ isActive }) => `
+                flex items-center justify-between px-4 py-3.5 rounded-2xl transition-all group
+                ${isActive 
+                  ? "bg-primary/10 text-primary font-bold shadow-sm" 
+                  : "text-gray-500 hover:bg-gray-50 hover:text-gray-900"}
+              `}
+            >
+              {({ isActive }) => (
+                <>
+                  <div className="flex items-center gap-3">
+                    <link.icon size={20} className={isActive ? "text-primary" : "text-gray-400 group-hover:text-gray-900"} />
+                    <span className="text-sm">{link.name}</span>
+                  </div>
+                  <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                </>
+              )}
+            </NavLink>
+          ))}
+        </nav>
+
+        <div className="p-6 border-t border-gray-50">
+          <button 
+            onClick={logOut}
+            className="w-full flex items-center gap-3 px-4 py-4 text-red-500 font-bold hover:bg-red-50 rounded-2xl transition-all"
+          >
+            <LogOut size={20} />
+            <span>Sign Out</span>
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-grow lg:ml-72 flex flex-col min-h-screen">
+        {/* Header */}
+        <header className="h-20 bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-40 flex items-center justify-between px-10">
+          <div className="relative group w-96">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors" size={18} />
+            <input 
+              type="text" 
+              placeholder="Search anything..."
+              className="w-full bg-gray-50 border-0 rounded-2xl pl-12 pr-6 py-3 outline-none focus:ring-2 focus:ring-primary/20 transition-all text-sm"
+            />
+          </div>
+
+          <div className="flex items-center gap-6">
+            <button className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-all relative">
+              <Bell size={20} />
+              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+            </button>
+            
+            <div className="flex items-center gap-4 pl-6 border-l border-gray-100">
+              <div className="text-right">
+                <p className="text-sm font-bold text-gray-900">{user?.displayName || "Manager"}</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-primary">{role}</p>
+              </div>
+              <img 
+                src={user?.photoURL || "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"} 
+                alt="Profile" 
+                className="w-10 h-10 rounded-xl border-2 border-white shadow-sm"
+              />
+            </div>
+          </div>
+        </header>
+
+        {/* Viewport */}
+        <div className="p-10 flex-grow">
+          <div className="max-w-6xl mx-auto">
+            <Outlet />
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
 
 export default DashbordLayout;
+

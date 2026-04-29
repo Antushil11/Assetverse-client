@@ -1,80 +1,91 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { Palette, ExternalLink, Image, Layout, Compass } from "lucide-react";
 
 const CreativeWork = () => {
   const projects = [
     {
-      title: "Brand Identity Design",
-      description:
-        "Designed full branding for a startup, including logo, colors, and typography.",
-      image:
-        "https://i.ibb.co.com/xKSrqJyz/images-q-tbn-ANd9-Gc-Tm-Q9-Tmtkk-Fr-JM5q-LUZ9-CQymd3-Qfj-Ama-EVi-UCWzccw1-s.jpg",
-      link: "#",
+      title: "Abstract Identity",
+      description: "Visual system for a next-gen digital asset brokerage.",
+      image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=100&w=2128",
+      category: "Branding",
+      icon: Palette
     },
     {
-      title: "UI/UX Mobile App",
-      description:
-        "Created user-friendly mobile app interfaces with Figma and React Native.",
-      image:
-        "https://i.ibb.co.com/SDGbdmxb/images-q-tbn-ANd9-Gc-Q5-VDRQC6q-Sd-Lk7o-n-KRc-PGWBjdmba-Vjzef-IBL6yiu-Zew-s.jpg",
-      link: "#",
+      title: "Flow Interface",
+      description: "Gesture-based mobile interaction models for HR platforms.",
+      image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=1200&q=80",
+      category: "UI/UX",
+      icon: Layout
     },
     {
-      title: "Website Redesign",
-      description:
-        "Redesigned an e-commerce website to improve user experience and conversion.",
-      image:
-        "https://i.ibb.co.com/TMXx4Tbq/images-q-tbn-ANd9-Gc-SGF803jp46-L1b-Rj-ZT1c-J4a-YY-Oe-US-VCl-PEqqo-Jn9-s.jpg",
-      link: "#",
+      title: "Neon Commerce",
+      description: "Immersive e-commerce environment for luxury hardware.",
+      image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=100&w=2340",
+      category: "Web Design",
+      icon: Compass
     },
     {
-      title: "Illustrations & Graphics",
-      description:
-        "Created custom illustrations for social media and web campaigns.",
-      image:
-        "https://i.ibb.co.com/M53H8Lyj/images-q-tbn-ANd9-Gc-T7-Mk6n-VAVu53r-GZ67cyes03-Jioxqqf-Jq6-Ifu-7-IIJXng-s.jpg",
-      link: "#",
+      title: "Digital Artifacts",
+      description: "3D visual assets for enterprise marketing campaigns.",
+      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=100&w=2340",
+      category: "Graphics",
+      icon: Image
     },
   ];
 
   return (
-    <div className="pt-24">
-      <section
-        id="creative-work"
-        className="py-20  bg-gray-50  rounded-2xl "
-      >
-        <div className="container mx-auto px-6 md:px-20">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-10">
-            Creative Work
-          </h2>
+    <div className="pt-24 min-h-screen bg-[#022C31]">
+      {/* Page Hero */}
+      <section className="py-32 rounded-b-[80px] relative overflow-hidden mb-20">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
+        <div className="container mx-auto px-6 relative z-10 text-center space-y-8">
+          <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 rounded-full text-white/80 text-[10px] font-black uppercase tracking-[0.2em] backdrop-blur-md border border-white/5">
+            <Palette size={14} className="text-primary" /> Visual Innovation
+          </div>
+          <h1 className="text-6xl md:text-8xl font-black text-white leading-tight tracking-tighter">
+            Creative <br /> <span className="text-primary">Explorations.</span>
+          </h1>
+          <p className="text-xl text-white/40 max-w-2xl mx-auto font-medium leading-relaxed">
+            Where art meets enterprise logic. Pushing the boundaries of digital expression.
+          </p>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow hover:shadow-lg overflow-hidden transition duration-300"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary  font-medium"
-                  >
-                    View Project
-                  </a>
+      {/* Grid Content */}
+      <section className="container mx-auto px-6 pb-32">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="relative group h-[550px] rounded-[48px] overflow-hidden cursor-pointer shadow-2xl shadow-black/40"
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125 grayscale-[0.5] group-hover:grayscale-0"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#022C31] via-[#022C31]/40 to-transparent flex flex-col justify-end p-10 transform translate-y-12 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="flex items-center gap-3 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    <div className="w-8 h-8 rounded-lg bg-primary/20 backdrop-blur-md flex items-center justify-center text-white">
+                        <project.icon size={16} />
+                    </div>
+                    <span className="text-primary font-black uppercase tracking-widest text-[9px]">{project.category}</span>
+                </div>
+                <h3 className="text-3xl font-black text-white mb-4 tracking-tight">{project.title}</h3>
+                <p className="text-white/40 text-sm mb-8 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                  {project.description}
+                </p>
+                <div className="flex items-center gap-2 text-primary font-black uppercase tracking-widest text-[10px] group/btn">
+                  View Evolution <ExternalLink size={14} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                 </div>
               </div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       </section>
     </div>
@@ -82,3 +93,5 @@ const CreativeWork = () => {
 };
 
 export default CreativeWork;
+
+

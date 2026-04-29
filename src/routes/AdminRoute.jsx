@@ -12,7 +12,7 @@ const AdminRoute = ({children}) => {
         return <Loading></Loading>
     }
 
-    if(role !== 'admin'){
+    if (role !== 'admin' && role !== 'hr') {
         return <Forbidden></Forbidden>
     }
     return children

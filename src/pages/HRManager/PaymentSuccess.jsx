@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import useAxoisSecure from "../../hooks/useAxoisSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const PaymentSuccess = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const sessionId = searchParams.get("session_id");
-  const axiosSecure = useAxoisSecure();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const updatePayment = async () => {

@@ -26,10 +26,8 @@ import ProfilePage from "../pages/Employee/ProfilePage";
 import CaseStudies from "../pages/CaseStudies";
 import RecentWork from "../pages/RecentWork";
 import CreativeWork from "../pages/CreativeWork";
-
-
-
-
+import Coverage from "../pages/Coverage/Coverage";
+import ExpansiveProject from "../pages/ExpansiveProject";
 
 export const router = createBrowserRouter([
   {
@@ -42,20 +40,29 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path:'/CaseStudies',
-        element:<CaseStudies></CaseStudies>
+        path: '/CaseStudies',
+        element: <CaseStudies />
       },
       {
         path: '/RecentWork',
-        element:<RecentWork></RecentWork>
+        element: <RecentWork />
       },
       {
-        path:"/Creative-Work",
-        element:<CreativeWork></CreativeWork>
+        path: "/Creative-Work",
+        element: <CreativeWork />
+      },
+      {
+        path: "/Coverage",
+        element: <Coverage />,
+        loader: () => fetch("/serviceCenters.json")
+      },
+      {
+        path: "/ExpansiveProject",
+        element: <ExpansiveProject />
       }
-     
     ],
   },
+
   {
     path: "/",
     element: <AuthLayout />,
